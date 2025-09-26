@@ -1,1 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 @import "tailwindcss";
+
+
+/* Couleurs personnalisées globales */
+:root {
+  --brownDark: #431b09;
+  --ivory: #fdfffa;
+  --mint: #f0ffce;
+  --coffee: #684939;
+  --amber: #facc14;
+}
+
+/* Classes utilitaires personnalisées */
+.text-brownDark { color: var(--brownDark); }
+.bg-brownDark { background-color: var(--brownDark); }
+.border-brownDark { border-color: var(--brownDark); }
+.hover\:bg-brownDark:hover { background-color: var(--brownDark); }
+
+.text-ivory { color: var(--ivory); }
+.bg-ivory { background-color: var(--ivory); }
+
+.text-mint { color: var(--mint); }
+.bg-mint { background-color: var(--mint); }
+
+.text-coffee { color: var(--coffee); }
+.bg-coffee { background-color: var(--coffee); }
+
+.text-amber { color: var(--amber); }
+.bg-amber { background-color: var(--amber); }
+
+
+
+/* ========================== POLICES ==========================*/
+@font-face {
+  font-family: "NoyhrSemiLight";
+  src: url("/fonts/fonnts.com-noyhr-bold.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
