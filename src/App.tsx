@@ -1,10 +1,21 @@
+import React from "react";
+import Badge from "./components/ui/Badge"; // importe ton Badge (ajuste le chemin si besoin)
+
 function App() {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <p className="text-[5em] font-bold text-blue-500">TEST</p>
-      <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">
-        Login
-      </button>
+    <div className="p-20">
+
+      <div className=" w-full h-10vh flex gap-50">
+        <Badge label="Handcrafted" label2="Excellence" />
+
+      <Badge label="Sustainable" label2="Materials" />
+
+       <Badge label="Timeless Design"/>
+
+      <Badge label="Personal Touch"/>
+      </div>
+
+
     </div>
   );
 }
