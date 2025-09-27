@@ -1,7 +1,9 @@
-import React from "react";
 import Badge from "./components/ui/Badge"; // importe ton Badge (ajuste le chemin si besoin)
 import Card1 from "./components/ui/Card1"; // importe ton Card1 (ajuste le chemin si besoin)
 import Card2 from "./components/ui/Card2"; // importe ton Card2 (ajuste le chemin si besoin)
+import CustomButton from "./components/ui/CustomButton"; // importe ton Button (ajuste le chemin si besoin)
+import Arrow from "./assets/icons/Arrow.svg";
+
 import Shirt from "./assets/images/chemise.jpeg";
 import Top from "./assets/images/top.jpeg";
 
@@ -12,6 +14,8 @@ function App() {
   return (
     <div className="p-20 bg-ivory">
 
+      {/* Badges */}
+
       <div className=" w-full h-10vh flex gap-50">
         <Badge label="Handcrafted" label2="Excellence" />
 
@@ -21,6 +25,8 @@ function App() {
 
         <Badge label="Personal Touch"/>
       </div>
+
+      {/* Card1 */}
 
       <div className=" w-full h-10vh flex gap-10">
         <Card1
@@ -44,6 +50,8 @@ function App() {
       />
       </div>
 
+      {/* Card2 */}
+
       <div className=" w-full h-10vh flex gap-10 mt-20">
         <Card2
           src={Top}
@@ -52,6 +60,28 @@ function App() {
           className="mx-auto"
         />
       </div>
+
+      {/* Button */}
+
+      <div className="mt-7 flex gap-5 w-full" >
+        <CustomButton 
+        text = "Click me"
+        background = "bg-brownDark"
+        textColor = "text-white"
+         ></CustomButton>
+
+        <CustomButton 
+        text = "Click me again"
+        background = "bg-ivory"
+        textColor = "text-brownDark"
+        border = {true}
+        borderColor = "border-brownDark"
+        icon={<img src={Arrow} alt="arrow icon" className="w-6 h-6" />}
+         ></CustomButton>
+
+
+      </div>
+
     </div>
 
   );
