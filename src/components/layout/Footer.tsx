@@ -1,13 +1,14 @@
 import React from "react";
 import { Mail, Phone, Instagram, Facebook, Twitter, Heart } from "lucide-react";
 
+import Top from "../../assets/images/top.jpeg";
+
 type SocialLink = {
   icon: React.ReactNode;
   href: string;
 };
 
 type FooterProps = {
-  brand: string;
   description: string;
   email: string;
   phone: string;
@@ -17,7 +18,6 @@ type FooterProps = {
 };
 
 const Footer: React.FC<FooterProps> = ({
-  brand,
   description,
   email,
   phone,
@@ -30,10 +30,14 @@ const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* --- Logo & description --- */}
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <Heart className="text-mint" fill="currentColor" />
-            <span className="text-xl font-semibold text-mint">{brand}</span>
-          </div>
+          <div className="flex items-center gap-3">
+          <img
+            src={Top}
+            alt="Carix Brand Logo"
+            className="w-28 h-auto object-contain" // ajuster largeur/hauteur
+          />
+          <span className="text-xl font-bold">Carix</span>
+        </div>
           <p className="text-sm mb-6">{description}</p>
           <div className="flex gap-4 text-noyhr">
             {socials.map((s, i) => (
@@ -75,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({
 
       {/* --- Bottom --- */}
       <div className="mt-10 border-t border-ivory/10 pt-6 text-center text-sm text-ivory text-noyhr">
-        © {year} {brand}. All rights reserved. Made with{" "}
+        © {year} Carix. All rights reserved. Made with{" "}
         <Heart className="inline-block text-mint mx-1" size={16} fill="currentColor" /> 
         for knitting lovers.
       </div>

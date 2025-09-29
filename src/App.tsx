@@ -122,7 +122,6 @@ function App() {
       {/* Footer */}
       <div className="mt-10">
       <Footer
-        brand="Carix"
         description="Handcrafted crochet clothing with a personal touch."
         email="carix.online.store@gmail.com"
         phone="+226 54 67 56 55"
