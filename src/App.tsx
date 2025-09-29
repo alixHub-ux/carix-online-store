@@ -4,6 +4,10 @@ import Card2 from "./components/ui/Card2"; // importe ton Card2 (ajuste le chemi
 import CustomButton from "./components/ui/CustomButton"; // importe ton Button (ajuste le chemin si besoin)
 import Card3 from "./components/ui/Card3"; // importe ton Card3 (ajuste le chemin si besoin)
 import Stat from "./components/ui/Stat"; // importe ton Stat (ajuste le chemin si besoin)
+import Footer from "./components/layout/Footer";
+
+import { Instagram, Facebook, Twitter } from "lucide-react";
+
 import Arrow from "./assets/icons/Arrow.svg";
 
 import Shirt from "./assets/images/chemise.jpeg";
@@ -113,6 +117,27 @@ function App() {
           description="Happy Customers"
           descriptionColor="text-brownLight"
         />
+      </div>
+
+      {/* Footer */}
+      <div className="mt-10">
+      <Footer
+        brand="Carix"
+        description="Handcrafted crochet clothing with a personal touch."
+        email="carix.online.store@gmail.com"
+        phone="+226 54 67 56 55"
+        links={[
+          { label: "Acceuil", href: "#" },
+          { label: "Produits", href: "#" },
+          { label: "Nous", href: "#" },
+          { label: "Commander", href: "#" },
+        ]}
+        socials={[
+          { icon: <Instagram />, href: "https://www.instagram.com" },
+          { icon: <Facebook />, href: "https://www.facebook.com" },
+          { icon: <Twitter />, href: "https://www.twitter.com" },
+        ]}
+      />
       </div>
 
     </div>
