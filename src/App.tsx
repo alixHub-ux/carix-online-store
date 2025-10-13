@@ -4,9 +4,13 @@ import Card2 from "./components/ui/Card2"; // importe ton Card2 (ajuste le chemi
 import CustomButton from "./components/ui/CustomButton"; // importe ton Button (ajuste le chemin si besoin)
 import Card3 from "./components/ui/Card3"; // importe ton Card3 (ajuste le chemin si besoin)
 import Stat from "./components/ui/Stat"; // importe ton Stat (ajuste le chemin si besoin)
+
 import Footer from "./components/layout/Footer";
 
 import { Instagram, Facebook, Twitter } from "lucide-react";
+
+
+import Header from "./components/layout/Header"; // ✅ Import du Header
 
 import Arrow from "./assets/icons/Arrow.svg";
 
@@ -19,6 +23,22 @@ function App() {
   };
   return (
     <div className="p-20 bg-ivory">
+
+       <div className="bg-ivory min-h-screen">
+      {/* ✅ Ajout du Header */}
+      <Header
+        logo={
+          <div className="flex items-center gap-2 text-brownDark font-bold text-xl">
+            <span className="text-2xl">♥</span> Carix
+          </div>
+        }
+        links={[
+          { name: "Home", href: "#" },
+          { name: "Products", href: "#" },
+          { name: "About", href: "#" },
+          { name: "Order", href: "#" },
+        ]}
+      /> </div>
 
       {/* Badges */}
 
@@ -119,6 +139,7 @@ function App() {
         />
       </div>
 
+<<<<<<< Updated upstream
       {/* Footer */}
       <div className="mt-10">
       <Footer
@@ -138,6 +159,9 @@ function App() {
         ]}
       />
       </div>
+=======
+
+>>>>>>> Stashed changes
 
     </div>
 
