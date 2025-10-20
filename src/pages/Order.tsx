@@ -1,186 +1,450 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Sparkles, Send, Phone, Mail, Package, MessageSquare, User, CheckCircle } from "lucide-react";
 import CustomButton from "../components/ui/CustomButton";
-import Card1 from "../components/ui/Card1";
-import Badge from "../components/ui/Badge";
-import Arrow from "../assets/icons/Arrow.svg";
-import Shirt from "../assets/images/chemise.jpeg";
-import Top from "../assets/images/top.jpeg";
 
 function Order() {
-  const [cart, setCart] = useState<Array<{ title: string; price: string }>>([]);
+  // Form state
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    product: "",
+    message: "",
+  });
 
-  const handleAddToCart = (title: string, price: string) => {
-    setCart([...cart, { title, price }]);
-    alert(`${title} ajouté au panier !`);
+  // Animation states
+  const heroRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLElement>(null);
+  const howItWorksRef = useRef<HTMLElement>(null);
+  const testimonialsRef = useRef<HTMLElement>(null);
+  const helpRef = useRef<HTMLElement>(null);
+
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isHowItWorksVisible, setIsHowItWorksVisible] = useState(false);
+  const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
+  const [isHelpVisible, setIsHelpVisible] = useState(false);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const createObserver = (
+      ref: React.RefObject<HTMLElement>,
+      setState: React.Dispatch<React.SetStateAction<boolean>>
+    ) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setState(true);
+          }
+        });
+      }, observerOptions);
+
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+
+      return observer;
+    };
+
+    const observers = [
+      createObserver(heroRef, setIsHeroVisible),
+      createObserver(formRef, setIsFormVisible),
+      createObserver(howItWorksRef, setIsHowItWorksVisible),
+      createObserver(testimonialsRef, setIsTestimonialsVisible),
+      createObserver(helpRef, setIsHelpVisible),
+    ];
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
+  const products = [
+    "Chemise en crochet",
+    "Top tricoté",
+    "Pull artisanal",
+    "Écharpe personnalisée",
+    "Chouchou",
+    "Ourson en tricot",
+    "Autre (préciser dans le message)",
+  ];
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleFavorite = (title: string) => {
-    alert(`Produit "${title}" ajouté aux favoris !`);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validation
+    if (!formData.fullName || !formData.email || !formData.product) {
+      alert("Veuillez remplir tous les champs obligatoires");
+      return;
+    }
+
+    // Create WhatsApp message
+    const whatsappMessage = `🌟 *Nouvelle Commande Carix* 🌟
+
+👤 *Nom Complet:* ${formData.fullName}
+📧 *Email:* ${formData.email}
+🎁 *Produit:* ${formData.product}
+
+💬 *Message:*
+${formData.message || "Aucun message supplémentaire"}`;
+
+    const phoneNumber = "22607926054";
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+
+    // Reset form
+    setFormData({
+      fullName: "",
+      email: "",
+      product: "",
+      message: "",
+    });
   };
 
-  const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + parseFloat(item.price), 0);
-  };
+  const testimonials = [
+    {
+      text: "Absolutely love my custom scarf! The quality is amazing and the craftsmanship is evident in every detail.",
+      author: "Sarah M.",
+    },
+    {
+      text: "The scrunchies are so soft and beautiful. Perfect for my daily routine and they make great gifts too!",
+      author: "Emily R.",
+    },
+    {
+      text: "My daughter loves her knitted teddy bear! It's become her favorite companion.",
+      author: "Michael D.",
+    },
+  ];
+
+  const steps = [
+    {
+      number: "1",
+      title: "Soumettez votre demande",
+      description: "Remplissez le formulaire avec vos coordonnées et préférences",
+      icon: <Send size={24} />,
+    },
+    {
+      number: "2",
+      title: "Nous vous contactons",
+      description: "Notre équipe vous contactera sous 24h pour discuter des détails",
+      icon: <MessageSquare size={24} />,
+    },
+    {
+      number: "3",
+      title: "Fabrication commence",
+      description: "Nous confectionnons votre pièce avec amour et attention",
+      icon: <Sparkles size={24} />,
+    },
+    {
+      number: "4",
+      title: "Livraison",
+      description: "Votre magnifique accessoire arrive à votre porte",
+      icon: <Package size={24} />,
+    },
+  ];
 
   return (
-    <div className="p-20 bg-ivory">
-      {/* Header Section */}
-      <section className="mb-16 text-center">
-        <h1 className="text-5xl font-bold text-brownDark mb-4">
-          Commander
-        </h1>
-        <p className="text-xl text-brownLight max-w-3xl mx-auto">
-          Sélectionnez vos articles préférés et passez commande en toute simplicité
-        </p>
-      </section>
+    <div className="w-full min-h-screen bg-ivory overflow-hidden">
+      {/* Hero Section */}
+      <section
+        ref={heroRef}
+        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
+      >
+        <div
+          className={`text-center transition-all duration-700 ${
+            isHeroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 sm:gap-3 text-coffee mb-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+            <Sparkles
+              size={20}
+              className="sm:w-6 sm:h-6 flex-shrink-0 animate-spin-slow text-coffee"
+            />
+            <h2 className="text-sm sm:text-base md:text-lg font-medium">
+              Commandez Maintenant
+            </h2>
+          </div>
 
-      {/* Trust Badges */}
-      <section className="mb-12">
-        <div className="flex gap-8 justify-center flex-wrap">
-          <Badge label="Secure" label2="Payment" />
-          <Badge label="Fast" label2="Delivery" />
-          <Badge label="Easy" label2="Returns" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brownDark mb-6">
+            Créez Votre Pièce <br />
+            <span className="text-coffee">Sur Mesure</span>
+          </h1>
+
+          <p className="text-sm sm:text-base md:text-lg text-coffee max-w-3xl mx-auto leading-relaxed">
+            Chaque création est unique, confectionnée spécialement pour vous avec passion et savoir-faire artisanal.
+            Commencez votre commande en quelques clics.
+          </p>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-bold text-brownDark mb-8">
-          Produits Disponibles
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <Card1
-            category="Habits"
-            title="Chemise"
-            description="Chemise élégante en crochet, confectionnée en laine douce et respirante."
-            price="50"
-            imageUrl={Shirt}
-            rating={5}
-            onFavoriteClick={() => handleFavorite("Chemise")}
-          />
+      {/* Order Form Section */}
+      <section
+        ref={formRef}
+        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16"
+      >
+        <div
+          className={`max-w-3xl mx-auto bg-white/50 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl transition-all duration-700 ${
+            isFormVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
+          <div className="space-y-6">
+            {/* Full Name */}
+            <div>
+              <label
+                htmlFor="fullName"
+                className="flex items-center gap-2 text-brownDark font-medium mb-2 text-sm sm:text-base"
+              >
+                <User size={18} className="text-coffee" />
+                Nom Complet *
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-xl border-2 border-coffee/20 bg-white/80 focus:border-coffee focus:outline-none transition-all text-brownDark placeholder:text-coffee/40"
+                placeholder="Votre nom complet"
+              />
+            </div>
 
-          <Card1
-            category="Habits"
-            title="Top"
-            description="Top en crochet réalisé à la main avec une laine douce et légère."
-            price="10"
-            imageUrl={Top}
-            rating={5}
-            onFavoriteClick={() => handleFavorite("Top")}
-          />
+            {/* Email */}
+            <div>
+              <label
+                htmlFor="email"
+                className="flex items-center gap-2 text-brownDark font-medium mb-2 text-sm sm:text-base"
+              >
+                <Mail size={18} className="text-coffee" />
+                Adresse Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-xl border-2 border-coffee/20 bg-white/80 focus:border-coffee focus:outline-none transition-all text-brownDark placeholder:text-coffee/40"
+                placeholder="votre@email.com"
+              />
+            </div>
 
-          <Card1
-            category="Habits"
-            title="Pull Bohème"
-            description="Pull confortable en crochet, parfait pour les journées fraîches."
-            price="75"
-            imageUrl={Shirt}
-            rating={5}
-            onFavoriteClick={() => handleFavorite("Pull")}
-          />
-        </div>
-      </section>
+            {/* Product Selection */}
+            <div>
+              <label
+                htmlFor="product"
+                className="flex items-center gap-2 text-brownDark font-medium mb-2 text-sm sm:text-base"
+              >
+                <Package size={18} className="text-coffee" />
+                Produit d'Intérêt *
+              </label>
+              <select
+                id="product"
+                name="product"
+                value={formData.product}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-xl border-2 border-coffee/20 bg-white/80 focus:border-coffee focus:outline-none transition-all text-brownDark cursor-pointer"
+              >
+                <option value="">Sélectionnez un produit</option>
+                {products.map((product, index) => (
+                  <option key={index} value={product}>
+                    {product}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-      {/* Shopping Cart */}
-      <section className="mb-20 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-brownDark mb-8">
-          Votre Panier ({cart.length})
-        </h2>
-        
-        {cart.length === 0 ? (
-          <div className="bg-white rounded-lg p-10 text-center shadow-sm">
-            <p className="text-brownLight text-lg">
-              Votre panier est vide. Ajoutez des produits pour commencer !
+            {/* Message */}
+            <div>
+              <label
+                htmlFor="message"
+                className="flex items-center gap-2 text-brownDark font-medium mb-2 text-sm sm:text-base"
+              >
+                <MessageSquare size={18} className="text-coffee" />
+                Message (Optionnel)
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                rows={5}
+                className="w-full px-4 py-3 rounded-xl border-2 border-coffee/20 bg-white/80 focus:border-coffee focus:outline-none transition-all text-brownDark placeholder:text-coffee/40 resize-none"
+                placeholder="Décrivez vos préférences, couleurs souhaitées, taille, ou toute autre demande spéciale..."
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="pt-4" onClick={handleSubmit}>
+              <CustomButton
+                text="Envoyer la Commande sur WhatsApp"
+                background="bg-brownDark"
+                textColor="text-white"
+                icon={<Send size={20} />}
+                className="w-full group hover:bg-coffee transition-all duration-300"
+              />
+            </div>
+
+            <p className="text-xs sm:text-sm text-coffee/60 text-center mt-4">
+              * Champs obligatoires. Vos informations seront envoyées via WhatsApp.
             </p>
           </div>
-        ) : (
-          <div className="bg-white rounded-lg p-8 shadow-sm">
-            {cart.map((item, index) => (
-              <div 
-                key={index} 
-                className="flex justify-between items-center py-4 border-b border-gray-200"
-              >
-                <span className="text-brownDark font-medium">{item.title}</span>
-                <span className="text-brownDark font-bold">{item.price}€</span>
-              </div>
-            ))}
-            
-            <div className="mt-6 pt-6 border-t-2 border-brownDark">
-              <div className="flex justify-between items-center text-2xl font-bold text-brownDark">
-                <span>Total:</span>
-                <span>{getTotalPrice().toFixed(2)}€</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* Quick Add Buttons */}
-      <section className="mb-20">
-        <h3 className="text-2xl font-bold text-brownDark mb-6 text-center">
-          Ajout Rapide
-        </h3>
-        <div className="flex gap-5 justify-center flex-wrap">
-          <CustomButton
-            text="Ajouter Chemise (50€)"
-            background="bg-brownDark"
-            textColor="text-white"
-            onClick={() => handleAddToCart("Chemise", "50")}
-          />
-          <CustomButton
-            text="Ajouter Top (10€)"
-            background="bg-brownDark"
-            textColor="text-white"
-            onClick={() => handleAddToCart("Top", "10")}
-          />
-          <CustomButton
-            text="Ajouter Pull (75€)"
-            background="bg-brownDark"
-            textColor="text-white"
-            onClick={() => handleAddToCart("Pull", "75")}
-          />
         </div>
       </section>
 
-      {/* Contact & Order Section */}
-      <section className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg p-10 shadow-sm">
-          <h2 className="text-3xl font-bold text-brownDark mb-6 text-center">
-            Finaliser la Commande
+      {/* How It Works */}
+      <section
+        ref={howItWorksRef}
+        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16"
+      >
+        <div
+          className={`text-center mb-12 transition-all duration-700 ${
+            isHowItWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
+            Comment Ça Marche
           </h2>
-          <p className="text-brownLight text-center mb-8 text-lg">
-            Pour passer commande, contactez-nous par email ou téléphone avec 
-            votre sélection
+          <p className="text-sm sm:text-base text-coffee max-w-2xl mx-auto">
+            Un processus simple et transparent pour votre commande personnalisée
           </p>
-          
-          <div className="space-y-4 mb-8">
-            <div className="text-center">
-              <p className="text-brownDark font-semibold">Email:</p>
-              <p className="text-brownLight">carix.online.store@gmail.com</p>
-            </div>
-            <div className="text-center">
-              <p className="text-brownDark font-semibold">Téléphone:</p>
-              <p className="text-brownLight">+226 54 67 56 55</p>
-            </div>
-          </div>
+        </div>
 
-          <div className="flex gap-5 justify-center flex-wrap">
-            <CustomButton
-              text="Nous Contacter"
-              background="bg-brownDark"
-              textColor="text-white"
-            />
-            <CustomButton
-              text="Questions?"
-              background="bg-ivory"
-              textColor="text-brownDark"
-              border={true}
-              borderColor="border-brownDark"
-              icon={<img src={Arrow} alt="arrow icon" className="w-6 h-6" />}
-            />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-700 hover:scale-105 hover:shadow-xl ${
+                isHowItWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-mint rounded-full mb-4 text-brownDark">
+                {step.icon}
+              </div>
+              <div className="inline-flex items-center justify-center w-8 h-8 bg-brownDark text-white rounded-full font-bold text-sm mb-3">
+                {step.number}
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-brownDark mb-2">
+                {step.title}
+              </h3>
+              <p className="text-sm text-coffee">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section
+        ref={testimonialsRef}
+        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16"
+      >
+        <div
+          className={`text-center mb-12 transition-all duration-700 ${
+            isTestimonialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
+            Ce Que Disent Nos Clients
+          </h2>
+          <p className="text-sm sm:text-base text-coffee max-w-2xl mx-auto">
+            Des retours authentiques de nos clients satisfaits
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 transition-all duration-700 hover:scale-105 hover:shadow-xl ${
+                isTestimonialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <CheckCircle key={i} size={16} className="text-mint fill-mint" />
+                ))}
+              </div>
+              <p className="text-sm sm:text-base text-coffee italic mb-4 leading-relaxed">
+                "{testimonial.text}"
+              </p>
+              <p className="text-sm font-medium text-brownDark">- {testimonial.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Need Help */}
+      <section
+        ref={helpRef}
+        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 mb-12"
+      >
+        <div
+          className={`max-w-4xl mx-auto bg-gradient-to-br from-mint/20 to-coffee/10 rounded-3xl p-8 sm:p-10 lg:p-12 text-center transition-all duration-700 ${
+            isHelpVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
+            Besoin d'Aide ?
+          </h2>
+          <p className="text-sm sm:text-base text-coffee mb-8 max-w-2xl mx-auto">
+            Des questions sur nos produits ou le processus de commande ? Nous sommes là pour vous aider !
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a
+              href="mailto:rayanebicaba.dev@gmail.com"
+              className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            >
+              <Mail size={20} className="text-coffee" />
+              <span className="text-brownDark font-medium text-sm sm:text-base">
+                rayanebicaba.dev@gmail.com
+              </span>
+            </a>
+
+            <a
+              href="tel:+22607926054"
+              className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            >
+              <Phone size={20} className="text-coffee" />
+              <span className="text-brownDark font-medium text-sm sm:text-base">
+                +22607926054
+              </span>
+            </a>
           </div>
         </div>
       </section>
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
+        }
+      `}</style>
     </div>
   );
 }
