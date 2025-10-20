@@ -14,13 +14,13 @@ type Card1Props = {
 
 const Card1: React.FC<Card1Props> = ({category, title, description, price, imageUrl, rating=0, onFavoriteClick}) => {
     return(
-        <div className="max-w-xs bg-ivory rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:scale-99">
+        <div className="max-w-md bg-ivory rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:scale-99">
       {/* Image + badge catégorie */}
       <div className="relative">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+          className="w-full h-70 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
         />
         <span className="absolute top-3 left-3 bg-mint text-coffee text-xs font-noyh px-3 py-1 rounded-full">
           {category}
