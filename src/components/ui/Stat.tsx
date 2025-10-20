@@ -21,7 +21,7 @@ const Stat: React.FC<StatProps> = ({
 
     return (
         <div className={statStyle}>
-            <div  className={`font-bold text-5xl`}>
+            <div  className={`font-bold text-3xl`}>
                 {mainTitle}
             </div>
             <div  className={`text-2xl`}>
