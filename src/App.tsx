@@ -38,7 +38,7 @@ function App() {
         links={[
           { name: "Acceuil", href: "#", onClick: () => setCurrentPage("home") },
           { name: "Produits", href: "#", onClick: () => setCurrentPage("products") },
-          { name: "A propos", href: "#", onClick: () => setCurrentPage("about") },
+          { name: "À propos", href: "#", onClick: () => setCurrentPage("about") },
           { name: "Commander", href: "#", onClick: () => setCurrentPage("order") },
         ]}
       />
