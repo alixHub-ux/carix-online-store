@@ -31,7 +31,7 @@ function Order() {
     };
 
     const createObserver = (
-      ref: React.RefObject<HTMLElement>,
+      ref: React.RefObject<HTMLElement | null>,
       setState: React.Dispatch<React.SetStateAction<boolean>>
     ) => {
       const observer = new IntersectionObserver((entries) => {
