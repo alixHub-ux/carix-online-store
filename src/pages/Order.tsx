@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Sparkles, Send, Phone, Mail, Package, MessageSquare, User, CheckCircle } from "lucide-react";
+import { Sparkles, Send, Phone, Mail, Package, MessageSquare, User, Star } from "lucide-react";
 import CustomButton from "../components/ui/CustomButton";
 
 function Order() {
@@ -101,7 +101,7 @@ function Order() {
 💬 *Message:*
 ${formData.message || "Aucun message supplémentaire"}`;
 
-    const phoneNumber = "22607926054";
+    const phoneNumber = "22664242467";
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
@@ -118,16 +118,16 @@ ${formData.message || "Aucun message supplémentaire"}`;
 
   const testimonials = [
     {
-      text: "Absolutely love my custom scarf! The quality is amazing and the craftsmanship is evident in every detail.",
-      author: "Sarah M.",
+      text: "J'adore mon écharpe personnalisée ! La qualité est incroyable et le savoir-faire est évident dans les moindres détails.",
+      author: "Nadine ",
     },
     {
-      text: "The scrunchies are so soft and beautiful. Perfect for my daily routine and they make great gifts too!",
-      author: "Emily R.",
+      text: "Les chouchous sont si doux et si beaux. Parfaits pour mon quotidien, ils font aussi de superbes cadeaux!" ,
+      author: "Lydia N.",
     },
     {
-      text: "My daughter loves her knitted teddy bear! It's become her favorite companion.",
-      author: "Michael D.",
+      text: "Ma fille adore son ours en peluche tricoté ! C'est devenu son compagnon préféré.",
+      author: "Patricia S.",
     },
   ];
 
@@ -180,7 +180,7 @@ ${formData.message || "Aucun message supplémentaire"}`;
             </h2>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brownDark mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-bold text-brownDark mb-6">
             Créez Votre Pièce <br />
             <span className="text-coffee">Sur Mesure</span>
           </h1>
@@ -377,7 +377,7 @@ ${formData.message || "Aucun message supplémentaire"}`;
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <CheckCircle key={i} size={16} className="text-mint fill-mint" />
+                  <Star key={i} size={16} className="text-amber fill-amber" />
                 ))}
               </div>
               <p className="text-sm sm:text-base text-coffee italic mb-4 leading-relaxed">
@@ -408,22 +408,22 @@ ${formData.message || "Aucun message supplémentaire"}`;
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a
-              href="mailto:rayanebicaba.dev@gmail.com"
+              href="mailto:carixshop1@gmail.com"
               className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
             >
               <Mail size={20} className="text-coffee" />
               <span className="text-brownDark font-medium text-sm sm:text-base">
-                rayanebicaba.dev@gmail.com
+                carixshop1@gmail.com
               </span>
             </a>
 
             <a
-              href="tel:+22607926054"
+              href="tel:+22664242467"
               className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
             >
               <Phone size={20} className="text-coffee" />
               <span className="text-brownDark font-medium text-sm sm:text-base">
-                +22607926054
+                +226 64-24-24-67
               </span>
             </a>
           </div>
