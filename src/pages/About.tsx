@@ -116,7 +116,7 @@ function About() {
                 className="mb-16 sm:mb-20 lg:mb-24 flex flex-col"
             >
                 <div 
-                    className={`w-[10%] inline-flex items-center gap-2 sm:gap-3 text-coffee mb-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all duration-700 ${
+                    className={`w-[35%] xl:w-[13%] l inline-flex items-center gap-2 sm:gap-3 text-coffee mb-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all duration-700 ${
                         isValuesVisible 
                             ? "opacity-100 scale-100" 
                             : "opacity-0 scale-95"
