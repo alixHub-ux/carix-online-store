@@ -3,20 +3,46 @@
 
 
 /* Couleurs personnalisées globales */
-:root {
+/* :root {
   --brownDark: #431b09;
   --ivory: #fdfffa;
   --mint: #f0ffce;
   --coffee: #684939;
   --amber: #facc14;
-}
+} */
 
-/* :root {
+:root {
   --brownDark: #2c1b3a;
   --ivory: #fafaff;
   --mint: #d9faff;
   --coffee: #46315a;
   --amber: #ffb84d;
+}
+
+/* :root {
+  --brownDark: #556b2f;
+  --ivory: #fff8dc;    
+  --mint: #aed9e0;    
+  --coffee: #8b4513;   
+  --amber: #ffcc99;    
+} */
+
+
+/* :root {
+  --brownDark: #1a1a2e; 
+  --ivory: #e0e0e0;    
+  --mint: #00bcd4;     
+  --coffee: #4a4a6e;   
+  --amber: #ff4c65;    
+} */
+
+
+/* :root {
+  --brownDark: #0a3d62; 
+  --ivory: #f7f1e3;    
+  --mint: #82ccdd;     
+  --coffee: #604848;   
+  --amber: #f8c291;    
 } */
 
 
