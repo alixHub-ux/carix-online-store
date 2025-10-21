@@ -51,8 +51,8 @@ function App() {
       {/* Footer */}
       <Footer
         description="Handcrafted crochet clothing with a personal touch."
-        email="carix.online.store@gmail.com"
-        phone="+226 54 67 56 55"
+        email="carixshop1@gmail.com"
+        phone="+226 64-24-24-67"
         links={[
           { label: "Acceuil", href: "#", onClick: () => setCurrentPage("home") },
           { label: "Produits", href: "#", onClick: () => setCurrentPage("products") },
