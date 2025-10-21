@@ -26,7 +26,7 @@ function About() {
             rootMargin: "0px 0px -50px 0px",
         };
 
-        const createObserver = (ref: React.RefObject<HTMLElement>, setState: React.Dispatch<React.SetStateAction<boolean>>) => {
+        const createObserver = (ref: React.RefObject<HTMLElement | null>, setState: React.Dispatch<React.SetStateAction<boolean>>) => {
             const observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
