@@ -95,7 +95,7 @@ function Home() {
 
                         {/* Main Title */}
                         <h1
-                            className="text-brownDark  font-bold leading-tight mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl animate-fadeInUp"
+                            className="text-brownDark  font-bold leading-tight mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-5xl animate-fadeInUp"
                             style={{ animationDelay: "0.2s" }}
                         >
                             De Magnifiques <br />
@@ -325,7 +325,7 @@ function Home() {
                         </div>
 
                         <h1
-                            className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-brownDark py-5 transition-all duration-700 delay-100 ${isBottomVisible
+                            className={`text-3xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-brownDark py-5 transition-all duration-700 delay-100 ${isBottomVisible
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-8"
                                 }`}
