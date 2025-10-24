@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Carix Online Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Une boutique en ligne élégante spécialisée dans les accessoires tricotés à la main.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧶 À Propos
 
-## React Compiler
+Carix est une boutique en ligne premium qui propose des accessoires tricotés à la main, alliant savoir-faire artisanal et design contemporain. Notre plateforme met en valeur des créations uniques, confectionnées avec passion et attention aux détails.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Fonctionnalités
 
-## Expanding the ESLint configuration
+- Catalogue de produits avec filtres dynamiques
+- Recherche intuitive
+- Panier d'achat interactif
+- Processus de paiement sécurisé
+- Espace client personnalisé
+- Design responsive (mobile-first)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies Utilisées
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 18
+- TypeScript
+- Vite
+- TailwindCSS
+- React Router
+- Lucide Icons
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clonez le dépôt
+```bash
+git clone https://github.com/votre-username/carix-online-store.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Installez les dépendances
+```bash
+cd carix-online-store
+npm install
 ```
+
+3. Lancez le serveur de développement
+```bash
+npm run dev
+```
+
+## Scripts Disponibles
+
+- `npm run dev` - Lance le serveur de développement
+- `npm run build` - Compile le projet pour la production
+- `npm run preview` - Prévisualise la version de production
+- `npm run lint` - Vérifie le code avec ESLint
+- `npm run test` - Lance les tests unitaires
+
+## Structure du Projet
+
+```
+carix-online-store/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── assets/
+│   ├── hooks/
+│   ├── utils/
+│   └── App.tsx
+├── public/
+└── package.json
+```
+
+
+
