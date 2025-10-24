@@ -7,11 +7,14 @@ import Top from "../assets/images/top.jpeg";
 import Chemise from "../assets/images/chemise.jpeg";
 import { useEffect, useRef, useState } from "react";
 import Stat from "../components/ui/Stat";
+import { useNavigate } from 'react-router-dom'; 
+
 
 function Home() {
+    const navigate = useNavigate();
     const collectionRef = useRef<HTMLElement>(null);
     const [isCollectionVisible, setIsCollectionVisible] = useState(false);
-
+    
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -145,7 +148,11 @@ function Home() {
                                         className="sm:w-6 sm:h-6 transition-transform group-hover:translate-x-1"
                                     />
                                 }
-                                className="group hover:bg-coffee"
+                                onClick={() => 
+                                    {window.scrollTo({ top: 0, behavior: "smooth" });
+                                    navigate('/products')}}
+                                className="group"
+                                
                             />
                             <CustomButton
                                 text="Notre Histoire"
@@ -153,6 +160,9 @@ function Home() {
                                 textColor="text-brownDark"
                                 border={true}
                                 borderColor="border-brownDark"
+                                onClick={() => 
+                                    {window.scrollTo({ top: 0, behavior: "smooth" });
+                                    navigate('/about')}}
                             />
                         </div>
 
@@ -294,6 +304,9 @@ function Home() {
                                 className="sm:w-6 sm:h-6 transition-transform group-hover:translate-x-1"
                             />
                         }
+                         onClick={() => 
+                            {window.scrollTo({ top: 0, behavior: "smooth" });
+                            navigate('/products')}}
                         className="group hover:bg-coffee "
                     />
                 </div>
@@ -383,7 +396,10 @@ function Home() {
                                         className="sm:w-6 sm:h-6 transition-transform group-hover:translate-x-1"
                                     />
                                 }
-                                className="group hover:bg-coffee"
+                                 onClick={() => 
+                                    {window.scrollTo({ top: 0, behavior: "smooth" });
+                                    navigate('/about')}}
+                                                                    className="group hover:bg-coffee"
                             />
                         </div>
                     </div>

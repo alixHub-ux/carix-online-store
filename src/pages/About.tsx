@@ -274,7 +274,7 @@ function About() {
                         descriptionColor="text-brownLight"
                     />
                     <Stat
-                        mainTitle="5 Years"
+                        mainTitle="05 Ans"
                         mainTitleColor="text-brownDark"
                         description="D'expérience"
                         descriptionColor="text-brownLight"

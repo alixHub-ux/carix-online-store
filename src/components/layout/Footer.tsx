@@ -66,7 +66,7 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* --- Quick Links --- */}
         <div>
-          <h3 className="text-mint font-bold text-noyhr mb-4">Quick Links</h3>
+          <h3 className="text-mint font-bold text-noyhr mb-4">Liens rapides</h3>
           <ul className="space-y-2">
             {links.map((l, i) => (
               <li key={i}>
@@ -84,7 +84,7 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* --- Contact --- */}
         <div>
-          <h3 className="text-mint font-bold text-noyhr mb-4">Contact</h3>
+          <h3 className="text-mint font-bold text-noyhr mb-4">Contacts</h3>
           <ul className="space-y-3">
             <li className="flex items-center gap-2">
               <Mail className="text-mint" size={18} /> <span>{email}</span>
@@ -98,9 +98,7 @@ const Footer: React.FC<FooterProps> = ({
 
       {/* --- Bottom --- */}
       <div className="mt-10 border-t border-ivory/10 pt-6 text-center text-sm text-ivory text-noyhr">
-        © {year} Carix. All rights reserved. Made with{" "}
-        <Heart className="inline-block text-mint mx-1" size={16} fill="currentColor" />
-        for knitting lovers.
+        © {year} Carix. Tout droit réservés.
       </div>
     </footer>
   );

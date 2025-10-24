@@ -122,7 +122,7 @@ ${formData.message || "Aucun message supplémentaire"}`;
       author: "Nadine ",
     },
     {
-      text: "Les chouchous sont si doux et si beaux. Parfaits pour mon quotidien, ils font aussi de superbes cadeaux!" ,
+      text: "Les chouchous sont si doux et si beaux. Parfaits pour mon quotidien, ils font aussi de superbes cadeaux!",
       author: "Lydia N.",
     },
     {
@@ -166,9 +166,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
         className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
       >
         <div
-          className={`text-center transition-all duration-700 ${
-            isHeroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`text-center transition-all duration-700 ${isHeroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <div className="inline-flex items-center gap-2 sm:gap-3 text-coffee mb-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
             <Sparkles
@@ -198,9 +197,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
         className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16"
       >
         <div
-          className={`max-w-3xl mx-auto bg-white/50 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl transition-all duration-700 ${
-            isFormVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
+          className={`max-w-3xl mx-auto bg-white/50 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl transition-all duration-700 ${isFormVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
         >
           <div className="space-y-6">
             {/* Full Name */}
@@ -289,12 +287,13 @@ ${formData.message || "Aucun message supplémentaire"}`;
             </div>
 
             {/* Submit Button */}
-            <div className="pt-4" onClick={handleSubmit}>
+            <div className="pt-4">
               <CustomButton
                 text="Envoyer la Commande sur WhatsApp"
                 background="bg-brownDark"
                 textColor="text-white"
                 icon={<Send size={20} />}
+                onClick={handleSubmit}
                 className="w-full group hover:bg-coffee transition-all duration-300"
               />
             </div>
@@ -312,9 +311,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
         className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16"
       >
         <div
-          className={`text-center mb-12 transition-all duration-700 ${
-            isHowItWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`text-center mb-12 transition-all duration-700 ${isHowItWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
             Comment Ça Marche
@@ -328,9 +326,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
           {steps.map((step, index) => (
             <div
               key={index}
-              className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-700 hover:scale-105 hover:shadow-xl ${
-                isHowItWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
+              className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-700 hover:scale-105 hover:shadow-xl ${isHowItWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-mint rounded-full mb-4 text-brownDark">
@@ -354,9 +351,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
         className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16"
       >
         <div
-          className={`text-center mb-12 transition-all duration-700 ${
-            isTestimonialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`text-center mb-12 transition-all duration-700 ${isTestimonialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
             Ce Que Disent Nos Clients
@@ -370,9 +366,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 transition-all duration-700 hover:scale-105 hover:shadow-xl ${
-                isTestimonialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
+              className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 transition-all duration-700 hover:scale-105 hover:shadow-xl ${isTestimonialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="flex gap-1 mb-4">
@@ -395,9 +390,8 @@ ${formData.message || "Aucun message supplémentaire"}`;
         className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 mb-12"
       >
         <div
-          className={`max-w-4xl mx-auto bg-gradient-to-br from-mint/20 to-coffee/10 rounded-3xl p-8 sm:p-10 lg:p-12 text-center transition-all duration-700 ${
-            isHelpVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
+          className={`max-w-4xl mx-auto bg-gradient-to-br from-mint/20 to-coffee/10 rounded-3xl p-8 sm:p-10 lg:p-12 text-center transition-all duration-700 ${isHelpVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
             Besoin d'Aide ?

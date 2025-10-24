@@ -3,6 +3,7 @@ import { Heart, Search, Star, ShoppingBag } from "lucide-react";
 import Shirt from "../assets/images/chemise.jpeg";
 import Top from "../assets/images/top.jpeg";
 import CustomButton from "../components/ui/CustomButton";
+import { useNavigate } from 'react-router-dom'; 
 
 interface Product {
   id: number;
@@ -15,6 +16,7 @@ interface Product {
 }
 
 function Products() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tout");
   const [isVisible, setIsVisible] = useState(false);
@@ -149,9 +151,10 @@ function Products() {
     return matchesSearch && matchesCategory;
   });
 
-  const handleOrderClick = () => {
+ const handleOrderClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    navigate('/order'); 
+};
 
   return (
     <div className="w-full min-h-screen bg-ivory overflow-hidden">
@@ -302,7 +305,7 @@ function Products() {
             background="bg-brownDark"
             textColor="text-white"
             className="hover:bg-coffee transition-all duration-300 hover:scale-105"
-            onClick={handleOrderClick}
+            onClick={() => navigate('/order')}
           />
         </div>
       </section>
