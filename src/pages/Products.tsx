@@ -38,8 +38,6 @@ import Noeud from "../assets/images/noeud.jpeg";
 import Noeud1 from "../assets/images/noeud1.jpeg";
 import Noeud3 from "../assets/images/noeud3.jpeg";
 
-
-//Category Plush Toys
 import CustomButton from "../components/ui/CustomButton";
 import { useNavigate } from 'react-router-dom'; 
 
