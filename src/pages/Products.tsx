@@ -1,7 +1,45 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy } from "react";
 import { Heart, Search, Star, ShoppingBag } from "lucide-react";
-import Shirt from "../assets/images/chemise.jpeg";
-import Top from "../assets/images/top.jpeg";
+// Category Clothes
+import Shirt from "../assets/images/chemise1.jpeg";
+import Shirt1 from "../assets/images/chemise3.jpeg";
+import Top from "../assets/images/top1.jpeg";
+import Top2 from "../assets/images/top2.jpeg";
+import Top3 from "../assets/images/top3.jpeg";
+import Top4 from "../assets/images/top4.jpeg";
+import Top5 from "../assets/images/top5.jpeg";
+import Top6 from "../assets/images/top6.jpeg";
+import Jupe1 from "../assets/images/jupe1.jpeg";
+import Robe from "../assets/images/robe1.jpeg";
+import Robe2 from "../assets/images/robe.jpeg"; 
+import Robe3 from "../assets/images/robe3.jpeg";
+import Bolero from "../assets/images/bolero1.jpeg";
+import Bolero1 from "../assets/images/bolero2.jpeg";
+import Bolero2 from "../assets/images/bolero3.jpeg";
+import Bolero3 from "../assets/images/bolero4.jpeg";
+
+//Caterory Acessoiries
+import Bandeau1 from "../assets/images/bandeau1.jpeg";
+import Bandeau2 from "../assets/images/bandeau2.jpeg";
+import Bandeau5 from "../assets/images/bandeau5.jpeg";
+import Scrunchie1 from "../assets/images/scrunchie1.jpeg";
+import Scrunchie2 from "../assets/images/scrunchie2.jpeg";
+import Scrunchie3 from "../assets/images/scrunchie3.jpeg";
+import Sac1 from "../assets/images/sac1.jpeg";
+import Sac3 from "../assets/images/sac3.jpeg";
+import Sac4 from "../assets/images/sac4.jpeg";
+import Pochette from "../assets/images/pochette.jpeg";
+import Pochette1 from "../assets/images/pochette1.jpeg";
+import Pochette3 from "../assets/images/pochette3.jpeg";
+import Pochette4 from "../assets/images/pochette4.jpeg";
+import Porteclef from "../assets/images/porte_cle.jpeg";
+import PorteClef1 from "../assets/images/porte_cle1.jpeg";
+import Noeud from "../assets/images/noeud.jpeg";
+import Noeud1 from "../assets/images/noeud1.jpeg";
+import Noeud3 from "../assets/images/noeud3.jpeg";
+
+
+//Category Plush Toys
 import CustomButton from "../components/ui/CustomButton";
 import { useNavigate } from 'react-router-dom'; 
 
@@ -47,100 +85,315 @@ function Products() {
       name: "Chemise Élégante",
       category: "Clothes",
       description: "Chemise en crochet confectionnée en laine douce, style bohème chic",
-      price: 15000,
+      price: 17000,
       rating: 5,
       image: Shirt,
+    },
+    {
+      id: 17,
+      name: "Bandeau stylé",
+      category: "Accessories",
+      description: "Bandeau tricoté à la main avec des motifs uniques et colorés",
+      price: 500,
+      rating: 4,
+      image: Bandeau1,
     },
     {
       id: 2,
       name: "Top Tricoté",
       category: "Clothes",
       description: "Top artisanal parfait pour l'été, respirant et confortable",
-      price: 12000,
+      price: 3000,
       rating: 5,
       image: Top,
+    },
+    {
+      id: 18,
+      name: "Taute Sac",
+      category: "Accessories",
+      description: "Sac à main unique en son genre, tissé à la main avec des matériaux durables",
+      price: 6000,
+      rating: 5,
+      image: Sac1,
     },
     {
       id: 3,
-      name: "Pull Artisanal",
+      name: "Robe de Laine",
       category: "Clothes",
-      description: "Pull chaud en laine tricotée à la main pour l'hiver",
-      price: 25000,
+      description: "Robe en laine tricotée, élégante et confortable pour toutes les occasions",
+      price: 10000,
       rating: 5,
-      image: Shirt,
+      image: Robe,
+    },
+    {
+      id: 19,
+      name: "Porte-clés Amusant",
+      category: "Accessories",
+      description: "Porte-clés tricoté à la main en forme de rose colorée",
+      price: 500,
+      rating: 5,
+      image: Porteclef,
     },
     {
       id: 4,
-      name: "Écharpe Personnalisée",
+      name: "Boléro",
       category: "Clothes",
-      description: "Écharpe douce et chaude, disponible en plusieurs couleurs",
-      price: 8000,
+      description: "Boléro en laine tricotée, parfait pour les soirées fraîches",
+      price: 4000,
       rating: 4,
-      image: Top,
+      image: Bolero,
+    },
+    {
+      id: 20,
+      name: "Noeud pour Cheveux",
+      category: "Accessories",
+      description: "Noeud tricoté à la main, idéal pour accessoiriser vos coiffures",
+      price: 1000,
+      rating: 5,
+      image: Noeud,
     },
     {
       id: 5,
-      name: "Chouchou Élégant",
-      category: "Scrunchies",
-      description: "Chouchou en crochet doux pour cheveux, parfait pour le quotidien",
-      price: 1500,
+      name: "Top Chic Blanc",
+      category: "Clothes",
+      description: "Top blanc en crochet, élégant et polyvalent",
+      price: 3500,
       rating: 5,
-      image: Shirt,
+      image: Top6,
+    },
+    {
+      id: 21,
+      name: "Pochette",
+      category: "Accessories",
+      description: "Pochette tricotée à la main pour téléphone, pratique et stylée",
+      price: 2000,
+      rating: 4,
+      image: Pochette,
     },
     {
       id: 6,
-      name: "Set de Chouchous",
-      category: "Scrunchies",
-      description: "Lot de 3 chouchous assortis en différentes couleurs",
-      price: 4000,
+      name: "Mini Robe",
+      category: "Clothes",
+      description: "Robe courte en laine tricotée, parfaite pour un look décontracté",
+      price: 7000,
       rating: 5,
-      image: Top,
+      image: Robe2,
+    },
+    {
+      id: 22,
+      name: "Scrunchie Tournesol",
+      category: "Accessories",
+      description: "Scrunchie tricoté à la main, disponible en plusieurs couleurs vives",
+      price: 1500,
+      rating: 5,
+      image: Scrunchie1,
     },
     {
       id: 7,
-      name: "Ourson en Tricot",
-      category: "Plush Toys",
-      description: "Adorable ourson tricoté à la main, parfait cadeau pour enfants",
-      price: 10000,
+      name: "Chemise en Tricot",
+      category: "Clothes",
+      description: "Chemise en crochet confortable, idéale pour un usage quotidien",
+      price: 12000,
       rating: 5,
-      image: Shirt,
+      image: Shirt1,
+    },
+    {
+      id: 23,
+      name: "Bandeau Rayé",
+      category: "Accessories",
+      description: "Bandeau tricoté à la main avec un motif grillage classique",
+      price: 500,
+      rating: 4,
+      image: Bandeau2,
     },
     {
       id: 8,
-      name: "Lapin Artisanal",
-      category: "Plush Toys",
-      description: "Peluche lapin en crochet, doux et câlin",
+      name: "Haut Coupe",
+      category: "Clothes",
+      description: "Haut tricoté à la main avec une coupe moderne et élégante",
+      price: 3500,
+      rating: 5,
+      image: Top3,
+    },
+    {
+      id: 24,
+      name: "Sac Tissé",
+      category: "Accessories",
+      description: "Sac tissé à la main avec des matériaux naturels, idéal pour une sortie décontractée",
       price: 12000,
       rating: 5,
-      image: Top,
+      image: Sac3,
     },
     {
       id: 9,
-      name: "Cardigan Chunky",
+      name: "Boléro Oversize",
       category: "Clothes",
       description: "Cardigan oversize tricoté, style moderne et confortable",
-      price: 28000,
+      price: 5000,
       rating: 4,
-      image: Shirt,
+      image: Bolero3,
+    },
+    {
+      id: 25,
+      name: "Coque de Teléphone",
+      category: "Accessories",
+      description: "Coque tricotée à la main avec des couleurs vives et un design unique",
+      price: 3000,
+      rating: 4,
+      image: Pochette4,
+    },
+    {
+      id: 26,
+      name: "Scrunchie Pastel",
+      category: "Accessories",
+      description: "Scrunchie tricoté à la main dans des tons pastel doux",
+      price: 1000,
+      rating: 5,
+      image: Scrunchie3,
     },
     {
       id: 10,
-      name: "Gants Sans Doigts",
+      name: "Robe Longue Granny Square",
       category: "Clothes",
-      description: "Mitaines stylées pour rester au chaud tout en gardant vos mains libres",
+      description: "Robe longue en laine tricotée, élégante et confortable",
+      price: 20000,
+      rating: 4,
+      image: Robe3,
+    },
+    {
+      id: 27,
+      name: "Porte-clés Cerise",
+      category: "Accessories",
+      description: "Porte-clés tricoté à la main en forme de cerise, un accessoire charmant",
+      price: 300,
+      rating: 5,
+      image: PorteClef1,
+    },
+    {
+      id: 11,
+      name: "Haut Granny Square",
+      category: "Clothes",
+      description: "Haut tricoté à la main avec un motif granny square coloré",
+      price: 4000,
+      rating: 5,
+      image: Top5,
+    },
+    {
+      id: 28,
+      name: "Bandeau Coeur",
+      category: "Accessories",
+      description: "Bandeau tricoté à la main dans des tons doux",
+      price: 1000,
+      rating: 4,
+      image: Bandeau5,
+    },
+    {
+      id: 12,
+      name: "Jupe",
+      category: "Clothes",
+      description: "Jupe en crochet faite main avec un design unique et élégant",
       price: 6000,
       rating: 5,
-      image: Top,
+      image: Jupe1,
     },
+    {
+      id: 29,
+      name: "Noeud Papillon",
+      category: "Accessories",
+      description: "Noeud papillon tricoté à la main, parfait pour les occasions spéciales",
+      price: 2000,
+      rating: 5,
+      image: Noeud1,
+    },
+    {
+      id: 13,
+      name: "Top Elegant Bleu",
+      category: "Clothes",
+      description: "Top tricoté à la main avec un design élégant en bleu pastel",
+      price: 3000,
+      rating: 5,
+      image: Top4,
+    },
+    {
+      id: 30,
+      name: "Pochette Fleurie",
+      category: "Accessories",
+      description: "Pochette tricotée à la main avec un motif floral délicat",
+      price: 3000,
+      rating: 4,
+      image: Pochette3,
+    },
+    {
+      id: 14,
+      name: "Boléro Chunky",
+      category: "Clothes",
+      description: "Cardigan oversize tricoté, style moderne et confortable",
+      price: 4000,
+      rating: 4,
+      image: Bolero1,
+    },
+    {
+      id: 31,
+      name: "Noeud Papillon Classique",
+      category: "Accessories",
+      description: "Noeud papillon tricoté à la main avec un design classique idéal pour attacher vos cheveux",
+      price: 4000,
+      rating: 5,
+      image: Noeud3,
+    },
+    {
+      id: 15,
+      name: "Boléro",
+      category: "Clothes",
+      description: "Boléro en laine tricotée avec des motifs élégants",
+      price: 5000,
+      rating: 4,
+      image: Bolero2,
+    },
+    {
+      id: 32,
+      name: "Scrunchie Doux",
+      category: "Accessories",
+      description: "Scrunchie tricoté à la main avec un tissu doux et confortable",
+      price: 2000,
+      rating: 5,
+      image: Scrunchie2,
+    },
+    {
+      id: 16,
+      name: "Top Pastel",
+      category: "Clothes",
+      description: "Top tricoté à la main dans des tons pastel doux",
+      price: 4000,
+      rating: 5,
+      image: Top2,
+    },
+    {
+      id: 33,
+      name: "Pochette Chic",
+      category: "Accessories",
+      description: "Pochette tricotée à la main avec des détails élégants",
+      price: 4500,
+      rating: 4,
+      image: Pochette1,
+    },
+    {
+      id: 34,
+      name: "Sac Granny Square",
+      category: "Accessories",
+      description: "Sac tricoté à la main avec un motif granny square coloré",
+      price: 5000,
+      rating: 5,
+      image: Sac4,
+    }
   ];
 
-  const categories = ["Tout", "Vêtements", "Chouchous", "Peluches"];
+  const categories = ["Tout", "Vêtements", "Accessoires"];
   
   const categoryMap: { [key: string]: string } = {
     "Tout": "All",
     "Vêtements": "Clothes",
-    "Chouchous": "Scrunchies",
-    "Peluches": "Plush Toys"
+    "Accessoires": "Accessories",
   };
 
   const filteredProducts = products.filter((product) => {
@@ -232,7 +485,7 @@ function Products() {
                 {/* Badge catégorie */}
                 <div className="relative">
                   <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-mint/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-brownDark">
+                    <span className="bg-mint backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-brownDark">
                       {product.category}
                     </span>
                   </div>

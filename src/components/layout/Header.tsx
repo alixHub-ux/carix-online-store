@@ -1,16 +1,15 @@
 // components/layout/Header.tsx
 import React, { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import LogoImage from "../../assets/logo/logo 2.svg";
 
 type HeaderProps = {
-  logo?: React.ReactNode;
   links?: { name: string; href: string; onClick?: () => void }[];
   className?: string;
   linkSize?: string;
 };
 
 const Header: React.FC<HeaderProps> = ({
-  logo = <span className="text-brownDark font-bold">Carix</span>,
   links = [
     { name: "Acceuil", href: "#" },
     { name: "Produits", href: "#" },
@@ -52,7 +51,11 @@ const Header: React.FC<HeaderProps> = ({
       <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer">
-          {logo}
+          <img
+            src={LogoImage}
+            alt="Carix Brand Logo"
+            className="h-20 w-auto object-contain" // ✅ h-10 au lieu de w-32 pour meilleur contrôle
+          />
         </div>
 
         {/* Desktop Navigation */}

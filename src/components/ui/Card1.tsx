@@ -5,7 +5,7 @@ type Card1Props = {
     category : string;
     title : string;
     description : string;
-    price : string;
+    price : number;
     imageUrl : string;
     rating? : number;
     onFavoriteClick?: () => void;
@@ -49,7 +49,7 @@ const Card1: React.FC<Card1Props> = ({category, title, description, price, image
         </p>
 
         <div className="mt-4 flex items-center justify-between">
-          <span className="text-lg font-bold text-coffee">${price}</span>
+          <span className="text-lg font-bold text-coffee">{price} F</span>
           <button
             onClick={onFavoriteClick}
             className="p-1 rounded-full hover:bg-gray-100"

@@ -1,10 +1,13 @@
 import { Sparkles, ArrowRight, Heart, Star } from "lucide-react";
 import CustomButton from "../components/ui/CustomButton";
-import Shirt from "../assets/images/chemise.jpeg";
+import Noeud from "../assets/images/noeud3.jpeg";
 import Card1 from "../components/ui/Card1";
 import Card2 from "../components/ui/Card2";
-import Top from "../assets/images/top.jpeg";
+import Top from "../assets/images/top6.jpeg";
+import Top1 from "../assets/images/top3.jpeg";
 import Chemise from "../assets/images/chemise.jpeg";
+import Chemise1 from "../assets/images/chemise3.jpeg";
+import Bonnet from "../assets/images/bonnet1.jpeg";
 import { useEffect, useRef, useState } from "react";
 import Stat from "../components/ui/Stat";
 import { useNavigate } from 'react-router-dom'; 
@@ -200,7 +203,7 @@ function Home() {
                             {/* Main Image */}
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:shadow-mint/20 hover:-translate-y-2">
                                 <img
-                                    src={Shirt}
+                                    src={Noeud}
                                     alt="Accessoire tricoté à la main"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
@@ -267,23 +270,42 @@ function Home() {
                 {/* Cards avec animation en cascade */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 my-10">
                     {[
-                        { title: "Chemise", delay: "300" },
-                        { title: "Top", delay: "500" },
-                        { title: "Pull", delay: "700" },
+                        { 
+                            title: "Chemise", 
+                            delay: "300",
+                            description: "Chemise élégante en crochet, confectionnée en laine douce et respirante. Son style artisanal apporte une touche bohème et chaleureuse, idéale pour un look à la fois chic et décontracté.",
+                            price: "12000",
+                            imageUrl: Chemise1
+                        },
+                        { 
+                            title: "Top", 
+                            delay: "500",
+                            description: "Top tendance en crochet fait main, léger et confortable. Parfait pour les journées ensoleillées, il se marie facilement avec vos tenues estivales pour un style unique.",
+                            price: "3500",
+                            imageUrl: Top1
+                        },
+                        { 
+                            title: "Bonnet", 
+                            delay: "500",
+                            description: "Bonnet chaleureux en crochet, tricoté avec soin pour vous offrir douceur et confort. Sa texture artisanale en fait une pièce intemporelle pour affronter les saisons fraîches avec style.",
+                            price: "5000",
+                            imageUrl: Bonnet
+                        },
                     ].map((item, idx) => (
                         <div
                             key={idx}
-                            className={`transition-all duration-700 delay-${item.delay} ${isCollectionVisible
-                                ? "opacity-100 translate-y-0"
-                                : "opacity-0 translate-y-12"
-                                }`}
+                            className={`transition-all duration-700 delay-${item.delay} ${
+                                isCollectionVisible
+                                    ? "opacity-100 translate-y-0"
+                                    : "opacity-0 translate-y-12"
+                            }`}
                         >
                             <Card1
-                                category="Habits"
+                                category="Clothes"
                                 title={item.title}
-                                description="Chemise élégante en crochet, confectionnée en laine douce et respirante. Son style artisanal apporte une touche bohème et chaleureuse, idéale pour un look à la fois chic et décontracté."
-                                price={"50"}
-                                imageUrl={Shirt}
+                                description={item.description}
+                                price={Number(item.price)}
+                                imageUrl={item.imageUrl}
                                 rating={5}
                             />
                         </div>

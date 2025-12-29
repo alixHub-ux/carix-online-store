@@ -1,7 +1,7 @@
 // components/layout/Footer.tsx
 import React from "react";
 import { Mail, Phone, Heart } from "lucide-react"; // ✅ Suppression des imports inutilisés
-import Top from "../../assets/images/top.jpeg";
+import Logo from "../../assets/logo/logo 1.svg";
 
 type SocialLink = {
   icon: React.ReactNode;
@@ -42,11 +42,11 @@ const Footer: React.FC<FooterProps> = ({
         <div>
           <div className="flex items-center gap-3">
             <img
-              src={Top}
+              src={Logo}
               alt="Carix Brand Logo"
               className="w-28 h-auto object-contain"
             />
-            <span className="text-xl font-bold">Carix</span>
+            
           </div>
           <p className="text-sm mb-6">{description}</p>
           <div className="flex gap-4 text-noyhr">

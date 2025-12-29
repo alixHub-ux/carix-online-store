@@ -2,7 +2,13 @@ import Card2 from "../components/ui/Card2";
 import Card3 from "../components/ui/Card3";
 import Badge from "../components/ui/Badge";
 import Stat from "../components/ui/Stat";
-import Shirt from "../assets/images/chemise.jpeg";
+import Shirt from "../assets/images/chemise1.jpeg";
+import Bonnet from "../assets/images/bonnet1.jpeg";
+import Fabrique from "../assets/images/fabrique.jpeg";
+import Mockup from "../assets/images/Mockup Carix.png";
+import Material from "../assets/images/materiel.jpeg";
+import FondatriceImage from "../assets/images/fondatriceImg.jpeg";
+
 import { Heart, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -102,7 +108,7 @@ function About() {
                         className="hover:scale-105 transition-transform duration-300"
                     />
                     <Card2
-                        src={Shirt}
+                        src={Bonnet}
                         alt="Création en cours"
                         maxWidthClass="w-full max-w-[200px] sm:max-w-xs"
                         className="z-10 relative top-10 sm:top-20 hover:scale-105 transition-transform duration-300"
@@ -205,17 +211,20 @@ function About() {
                         {
                             title: "Sélection des matériaux",
                             description: "Nous sélectionnons soigneusement les meilleurs fils et matériaux, garantissant durabilité et qualité dans chaque choix.",
-                            delay: "delay-200"
+                            delay: "delay-200",
+                            backgroundImg: Material
                         },
                         {
                             title: "Fabrication artisanale",
                             description: "Nos artisans qualifiés donnent vie à chaque pièce, en utilisant des techniques traditionnelles transmises de génération en génération.",
-                            delay: "delay-300"
+                            delay: "delay-300",
+                            backgroundImg: Fabrique
                         },
                         {
                             title: "Assurance qualité",
                             description: "Chaque produit est minutieusement inspecté pour garantir qu'il répond à nos normes élevées avant d'être expédié.",
-                            delay: "delay-500"
+                            delay: "delay-500",
+                            backgroundImg: Mockup
                         }
                     ].map((item, index) => (
                         <div
@@ -227,7 +236,7 @@ function About() {
                             }`}
                         >
                             <Card3
-                                backgroundImg={Shirt}
+                                 backgroundImg={item.backgroundImg}
                                 chipText={String(index + 1)}
                                 chipBgColor="bg-brownDark"
                                 chipTextColor="text-ivory"
@@ -321,7 +330,7 @@ function About() {
                         <div className="relative group">
                             <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden bg-gradient-to-br from-mint/20 to-coffee/20 border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                                 <img
-                                    src={Shirt}
+                                    src={FondatriceImage}
                                     alt="Fondatrice de Carix"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
