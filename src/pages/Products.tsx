@@ -484,7 +484,7 @@ function Products() {
             {filteredProducts.map((product, index) => (
               <div
                 key={product.id}
-                ref={el => productRefs.current[product.id] = el}
+                ref={el => { if (el) productRefs.current[product.id] = el; }}
                 data-product-id={product.id}
                 className={`bg-white/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 ${
                   visibleProducts.has(product.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"

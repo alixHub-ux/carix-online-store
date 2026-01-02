@@ -27,11 +27,11 @@ function App() {
        <div className="bg-ivory min-h-screen">
       {/* ✅ Ajout du Header */}
       <Header
-        logo={
-          <div className="flex items-center gap-2 text-brownDark font-bold text-xl">
-            <span className="text-2xl">♥</span> Carix
-          </div>
-        }
+        // logo={
+        //   <div className="flex items-center gap-2 text-brownDark font-bold text-xl">
+        //     <span className="text-2xl">♥</span> Carix
+        //   </div>
+        // }
         links={[
           { name: "Home", href: "#" },
           { name: "Products", href: "#" },
@@ -59,7 +59,7 @@ function App() {
           category="Habits"
           title="Chemise"
           description="Chemise élégante en crochet, confectionnée en laine douce et respirante.Son style artisanal apporte une touche bohème et chaleureuse, idéale pour un look à la fois chic et décontracté."
-          price={"50"}
+          price={50}
           imageUrl={Shirt}
           rating={5}
           onFavoriteClick={() => handleFavorite("Chemise")}
@@ -69,7 +69,7 @@ function App() {
           category="Habits"
           title="Top"
           description="Top en crochet réalisé à la main avec une laine douce et légère. Son design unique apporte une touche bohème et cosy, parfait à porter seul en été ou superposé en saison fraîche."
-          price={"10"}
+          price={10}
           imageUrl={Top}
           rating={5}
           onFavoriteClick={() => handleFavorite("Top")}

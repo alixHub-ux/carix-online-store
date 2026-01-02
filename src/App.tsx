@@ -17,11 +17,11 @@ function AppContent() {
       {/* Header */}
       <Header
         linkSize="text-xl"
-        logo={
-          <div className="flex items-center gap-2 text-brownDark font-bold text-2xl">
-            <span className="text-2xl">♥</span> Carix
-          </div>
-        }
+        // logo={
+        //   <div className="flex items-center gap-2 text-brownDark font-bold text-2xl">
+        //     <span className="text-2xl">♥</span> Carix
+        //   </div>
+        // }
         links={[
           { name: "Acceuil", href: "/", onClick: () => navigate("/") },
           { name: "Produits", href: "/products", onClick: () => navigate("/products") },

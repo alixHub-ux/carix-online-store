@@ -1,6 +1,6 @@
 // components/layout/Footer.tsx
 import React from "react";
-import { Mail, Phone, Heart } from "lucide-react"; // ✅ Suppression des imports inutilisés
+import { Mail, Phone   } from "lucide-react"; // ✅ Suppression des imports inutilisés
 import Logo from "../../assets/logo/logo 1.svg";
 
 type SocialLink = {

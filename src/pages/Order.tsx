@@ -293,7 +293,7 @@ ${formData.message || "Aucun message supplémentaire"}`;
                 background="bg-brownDark"
                 textColor="text-white"
                 icon={<Send size={20} />}
-                onClick={handleSubmit}
+                onClick={() => handleSubmit({} as React.FormEvent)}
                 className="w-full group hover:bg-coffee transition-all duration-300"
               />
             </div>
