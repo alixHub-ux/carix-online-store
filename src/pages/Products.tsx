@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Heart, Search, Star, ShoppingBag } from "lucide-react";
 // Category Clothes
 import Shirt from "../assets/images/chemise1.jpeg";
@@ -55,24 +55,33 @@ function Products() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tout");
-  const [isVisible, setIsVisible] = useState(false);
-  const productsRef = useRef<HTMLDivElement>(null);
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [visibleProducts, setVisibleProducts] = useState<Set<number>>(new Set());
+  const heroRef = useRef<HTMLDivElement>(null);
+  const productRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
+  // Hero s'affiche immédiatement au chargement
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
+
+  // Observer pour les produits - s'affichent au scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true);
+            const productId = parseInt(entry.target.getAttribute('data-product-id') || '0');
+            setVisibleProducts(prev => new Set([...prev, productId]));
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
-    if (productsRef.current) {
-      observer.observe(productsRef.current);
-    }
+    Object.values(productRefs.current).forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
 
     return () => observer.disconnect();
   }, []);
@@ -402,16 +411,19 @@ function Products() {
     return matchesSearch && matchesCategory;
   });
 
- const handleOrderClick = () => {
+  const handleOrderClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     navigate('/order'); 
-};
+  };
 
   return (
     <div className="w-full min-h-screen bg-ivory overflow-hidden">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20">
-        <div className={`text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <section 
+        ref={heroRef}
+        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
+      >
+        <div className={`text-center transition-all duration-700 ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="inline-flex items-center gap-2 text-coffee mb-6">
             <Heart size={20} className="sm:w-6 sm:h-6" />
             <h2 className="text-sm sm:text-base md:text-lg font-medium">OUR COLLECTION</h2>
@@ -462,10 +474,7 @@ function Products() {
       </section>
 
       {/* Products Grid */}
-      <section
-        ref={productsRef}
-        className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 pb-16 sm:pb-20"
-      >
+      <section className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 pb-16 sm:pb-20">
         {filteredProducts.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-xl text-coffee">Aucun produit trouvé</p>
@@ -475,10 +484,12 @@ function Products() {
             {filteredProducts.map((product, index) => (
               <div
                 key={product.id}
+                ref={el => productRefs.current[product.id] = el}
+                data-product-id={product.id}
                 className={`bg-white/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                  visibleProducts.has(product.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ transitionDelay: `${(index % 8) * 100}ms` }}
               >
                 {/* Badge catégorie */}
                 <div className="relative">

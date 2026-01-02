@@ -13,6 +13,9 @@ import { Heart, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 function About() {
+    
+
+
     // Refs et states pour les animations
     const heroRef = useRef<HTMLElement>(null);
     const valuesRef = useRef<HTMLElement>(null);

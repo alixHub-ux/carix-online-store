@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import LogoImage from "../../assets/logo/logo 2.svg";
+import { useLocation } from "react-router-dom"; 
 
 type HeaderProps = {
   links?: { name: string; href: string; onClick?: () => void }[];
@@ -21,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation(); 
 
   // Fermer le menu si on clique en dehors (mobile)
   useEffect(() => {
@@ -46,6 +48,12 @@ const Header: React.FC<HeaderProps> = ({
     }
   };
 
+   // ✨ Fonction pour vérifier si un lien est actif
+  const isActive = (href: string) => {
+    return location.pathname === href;
+  };
+
+
   return (
     <header className={`w-full bg-white shadow-sm relative z-40 ${className}`}>
       <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
@@ -65,10 +73,21 @@ const Header: React.FC<HeaderProps> = ({
               key={idx}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link)}
-              className={`group relative ${linkSize} text-brownDark font-medium transition-colors duration-300 hover:text-coffee cursor-pointer`}
+              className={`group relative ${linkSize} text-brownDark font-medium transition-colors duration-300 hover:text-coffee cursor-pointer ${
+                isActive(link.href)
+                  ? "text-amber-900" // ✨ Couleur pour le lien actif
+                  : "text-amber-800"
+              }`}
             >
               <span className="relative z-10">{link.name}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brownDark transition-all duration-300 group-hover:w-full" />
+              {/* ✨ Soulignement permanent pour le lien actif */}
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-amber-900 transition-all duration-300 ${
+                  isActive(link.href)
+                    ? "w-full" // ✨ Toujours visible si actif
+                    : "w-0 group-hover:w-full" // Visible au survol sinon
+                }`}
+              />
             </a>
           ))}
         </nav>
@@ -99,7 +118,11 @@ const Header: React.FC<HeaderProps> = ({
               key={idx}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link)}
-              className={`block py-3 px-4 ${linkSize} text-brownDark font-medium rounded-lg transition-colors hover:bg-mint/20 hover:text-coffee cursor-pointer`}
+              className={`block py-3 px-4 ${linkSize} font-medium rounded-lg transition-colors cursor-pointer ${
+                isActive(link.href)
+                  ? "bg-emerald-100 text-amber-900 border-l-4 border-amber-900" // ✨ Style actif mobile
+                  : "text-amber-800 hover:bg-emerald-50 hover:text-amber-900"
+              }`}
             >
               {link.name}
             </a>
