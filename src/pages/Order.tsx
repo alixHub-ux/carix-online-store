@@ -82,9 +82,7 @@ function Order() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     // Validation
     if (!formData.fullName || !formData.email || !formData.product) {
       alert("Veuillez remplir tous les champs obligatoires");
@@ -293,7 +291,7 @@ ${formData.message || "Aucun message supplémentaire"}`;
                 background="bg-brownDark"
                 textColor="text-white"
                 icon={<Send size={20} />}
-                onClick={() => handleSubmit({} as React.FormEvent)}
+                onClick={handleSubmit}
                 className="w-full group hover:bg-coffee transition-all duration-300"
               />
             </div>
