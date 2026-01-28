@@ -38,6 +38,14 @@ import Noeud from "../assets/images/noeud.jpeg";
 import Noeud1 from "../assets/images/noeud1.jpeg";
 import Noeud3 from "../assets/images/noeud3.jpeg";
 
+//Category Materials
+import Kit1 from "../assets/images/kit1.jpg";
+import Kit2 from "../assets/images/kit2.jpg";
+import Kit3 from "../assets/images/kit3.jpg";
+import Laine1 from "../assets/images/laine1.jpg";
+import Laine2 from "../assets/images/laine2.jpg";
+import Laine3 from "../assets/images/laine3.jpg";
+
 import CustomButton from "../components/ui/CustomButton";
 import { useNavigate } from 'react-router-dom'; 
 
@@ -392,15 +400,70 @@ function Products() {
       price: 5000,
       rating: 5,
       image: Sac4,
+    },
+    {
+      id: 35,
+      name: "Kit de crochet Débutant",
+      category: "Materials",
+      description: "Kit complet pour débutants avec tout le nécessaire pour commencer à crocheter",
+      price: 5000,
+      rating: 5,
+      image: Kit1,
+    },
+    {
+      id: 36,
+      name: "Ensemble de crochets en fer",
+      category: "Materials",
+      description: "Ensemble de crochets en fer de différentes tailles pour tous vos projets de crochet",
+      price: 3000,
+      rating: 4,
+      image: Kit3,
+    },
+    {
+      id: 37,
+      name: "Crochets designés",
+      category: "Materials",
+      description: "Ensemble de crochets au design ergonomique pour un confort optimal",
+      price: 3500,
+      rating: 4,
+      image: Kit2,
+    },
+    {
+      id: 38,
+      name:"Laine acrylique",
+      category: "Materials",
+      description: "Laine acrylique de haute qualité pour tous vos projets de crochet(douzaine à 4000f)",
+      price: 4000,
+      rating: 5,
+      image: Laine1
+    },
+    {
+      id: 39,
+      name:"Laine en coton",
+      category: "Materials",
+      description: "Laine en coton douce et résistante (1pelote de 50g à 1000f ==>12 à 10000f)",
+      price: 10000,
+      rating: 5,
+      image: Laine3
+    },
+    {
+      id: 40,
+      name:"Laine Multi-couleur",
+      category: "Materials",
+      description: "Laine multi-couleur pour des créations vibrantes (100g à 1200f)",
+      price: 12000,
+      rating: 5,
+      image: Laine2
     }
   ];
 
-  const categories = ["Tout", "Vêtements", "Accessoires"];
+  const categories = ["Tout", "Vêtements", "Accessoires", "Materiels"];
   
   const categoryMap: { [key: string]: string } = {
     "Tout": "All",
     "Vêtements": "Clothes",
     "Accessoires": "Accessories",
+    "Materiels": "Materials",
   };
 
   const filteredProducts = products.filter((product) => {
@@ -555,12 +618,12 @@ function Products() {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 pb-16 sm:pb-20">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-mint/20 to-coffee/10 rounded-3xl p-8 sm:p-12 text-center">
+        <div className="max-w-4xl mx-auto bg-gradient-to-br from-mint/20 to-coffee/10 rounded-3xl p-8 sm:p-12 text-center flex flex-col items-center gap-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brownDark mb-4">
             Vous ne trouvez pas ce que vous cherchez ?
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-coffee mb-8 max-w-2xl mx-auto">
-            Nous créons également des pièces personnalisées ! Contactez-nous et laissez-nous donner vie à votre vision avec notre touche artisanale.
+            Nous créons également des pièces personnalisées ! Contactez-nous pour donner vie à votre vision avec notre touche artisanale, ou pour vous procurer tout le matériel nécessaire au crochet.
           </p>
           <CustomButton
             text="Demander une Commande Personnalisée"

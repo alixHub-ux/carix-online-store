@@ -4,13 +4,25 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import Order from "./pages/Order";
-import { Instagram, Facebook, Twitter } from "lucide-react";
+import { Instagram, Twitter } from "lucide-react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 // Composant séparé pour utiliser useNavigate
 // Dans App.tsx
 function AppContent() {
   const navigate = useNavigate();
+
+  const TikTokIcon = () => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12.5 2h2.1c.2 1.4 1 2.8 2.2 3.7 1 .7 2.1 1.1 3.2 1.2v2.2c-1.6 0-3.2-.5-4.6-1.5v6.9c0 3.1-2.5 5.5-5.5 5.5S4.4 17.6 4.4 14.5c0-3.1 2.5-5.5 5.5-5.5.3 0 .7 0 1 .1v2.3c-.3-.1-.6-.2-1-.2-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V2z"/>
+    </svg>
+  );
+
   
   return (
     <div className="bg-ivory min-h-screen">
@@ -52,9 +64,9 @@ function AppContent() {
           { label: "Commander", href: "/order", onClick: () => navigate("/order") },
         ]}
         socials={[
-          { icon: <Instagram />, href: "https://www.instagram.com" },
-          { icon: <Facebook />, href: "https://www.facebook.com" },
-          { icon: <Twitter />, href: "https://www.twitter.com" },
+          { icon: <Instagram />, href: "https://www.instagram.com/carix_shop?igsh=MWRmcXFuY295N3IzaQ==" },
+          { icon: <TikTokIcon />,href: "https://www.tiktok.com/@alixcarine?_r=1&_t=ZM-92lTNJDTMTI" },
+          { icon: <Twitter />, href: "https://x.com/CarixShop" },
         ]}
       />
     </div>

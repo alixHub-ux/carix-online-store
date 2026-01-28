@@ -64,11 +64,9 @@ function Order() {
 
   const products = [
     "Chemise en crochet",
-    "Top tricoté",
-    "Pull artisanal",
+    "Top crocheté",
     "Écharpe personnalisée",
     "Chouchou",
-    "Ourson en tricot",
     "Autre (préciser dans le message)",
   ];
 
@@ -90,11 +88,11 @@ function Order() {
     }
 
     // Create WhatsApp message
-    const whatsappMessage = `🌟 *Nouvelle Commande Carix* 🌟
+    const whatsappMessage = `🧶 *Nouvelle Commande Carix* 🧶
 
 👤 *Nom Complet:* ${formData.fullName}
 📧 *Email:* ${formData.email}
-🎁 *Produit:* ${formData.product}
+🛍️ *Produit:* ${formData.product}
 
 💬 *Message:*
 ${formData.message || "Aucun message supplémentaire"}`;
@@ -117,7 +115,7 @@ ${formData.message || "Aucun message supplémentaire"}`;
   const testimonials = [
     {
       text: "J'adore mon écharpe personnalisée ! La qualité est incroyable et le savoir-faire est évident dans les moindres détails.",
-      author: "Nadine ",
+      author: "Mme VEBAMBA ",
     },
     {
       text: "Les chouchous sont si doux et si beaux. Parfaits pour mon quotidien, ils font aussi de superbes cadeaux!",
