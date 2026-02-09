@@ -124,7 +124,7 @@ function Products() {
     },
     {
       id: 18,
-      name: "Taute Sac",
+      name: "Tote Bag",
       category: "Accessories",
       description: "Sac à main unique en son genre, tissé à la main avec des matériaux durables",
       price: 6000,
